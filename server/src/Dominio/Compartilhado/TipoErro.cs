@@ -1,4 +1,4 @@
-namespace NoteKeeper.Dominio.Compartilhado;
+namespace NoteStack.Dominio.Compartilhado;
 
 public enum TipoErro
 {

@@ -1,11 +1,11 @@
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Mvc;
-using NoteKeeper.Api.Compartilhado.Http;
+using NoteStack.Api.Compartilhado.Http;
 using MediatR;
-using NoteKeeper.Aplicacao.Modulos.Notas;
+using NoteStack.Aplicacao.Modulos.Notas;
 
-namespace NoteKeeper.Api.Modulos.Notas;
+namespace NoteStack.Api.Modulos.Notas;
 
 public sealed record CriarNotaRequest(
     string? Titulo,

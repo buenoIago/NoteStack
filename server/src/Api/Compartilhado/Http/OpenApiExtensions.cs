@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi;
 
-namespace NoteKeeper.Api.Compartilhado.Http;
+namespace NoteStack.Api.Compartilhado.Http;
 
 public static class OpenApiExtensions
 {
@@ -13,7 +13,7 @@ public static class OpenApiExtensions
             {
                 document.Info = new OpenApiInfo
                 {
-                    Title = "NoteKeeper API",
+                    Title = "NoteStack API",
                     Version = "v1",
                     Description = "API para autenticação e organização pessoal de notas e categorias."
                 };

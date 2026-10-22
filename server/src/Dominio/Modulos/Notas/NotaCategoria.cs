@@ -1,6 +1,6 @@
-using NoteKeeper.Dominio.Modulos.Categorias;
+using NoteStack.Dominio.Modulos.Categorias;
 
-namespace NoteKeeper.Dominio.Modulos.Notas;
+namespace NoteStack.Dominio.Modulos.Notas;
 
 public sealed class NotaCategoria
 {

@@ -2,7 +2,7 @@ using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace NoteKeeper.Aplicacao;
+namespace NoteStack.Aplicacao;
 
 public static class DependencyInjection
 {

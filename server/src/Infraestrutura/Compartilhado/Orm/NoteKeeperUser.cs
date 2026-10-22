@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace NoteKeeper.Infraestrutura.Compartilhado.Orm;
+namespace NoteStack.Infraestrutura.Compartilhado.Orm;
 
-public sealed class NoteKeeperUser : IdentityUser<Guid>
+public sealed class NoteStackUser : IdentityUser<Guid>
 {
     public string Nome { get; set; } = string.Empty;
 }

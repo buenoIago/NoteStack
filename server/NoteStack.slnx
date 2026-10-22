@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Project Path="src/Api/NoteStack.Api.csproj" />
+  <Project Path="src/Aplicacao/NoteStack.Aplicacao.csproj" />
+  <Project Path="src/Dominio/NoteStack.Dominio.csproj" />
+  <Project Path="src/Infraestrutura/NoteStack.Infraestrutura.csproj" />
+  <Folder Name="/tests/">
+    <Project Path="tests/NoteStack.Tests/NoteStack.Tests.csproj" />
+  </Folder>
+</Solution>

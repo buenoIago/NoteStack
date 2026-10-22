@@ -1,4 +1,4 @@
-namespace NoteKeeper.Aplicacao.Compartilhado;
+namespace NoteStack.Aplicacao.Compartilhado;
 
 public sealed record CategoriaDto(Guid Id, string Titulo);
 

@@ -1,9 +1,9 @@
 using FluentResults;
 using MediatR;
-using NoteKeeper.Aplicacao.Compartilhado;
-using NoteKeeper.Dominio.Modulos.Notas;
+using NoteStack.Aplicacao.Compartilhado;
+using NoteStack.Dominio.Modulos.Notas;
 
-namespace NoteKeeper.Aplicacao.Modulos.Notas;
+namespace NoteStack.Aplicacao.Modulos.Notas;
 
 public sealed record ListarNotasQuery(Guid UsuarioId, IReadOnlyCollection<Guid>? CategoriaIds)
     : IRequest<Result<IReadOnlyList<NotaDto>>>;

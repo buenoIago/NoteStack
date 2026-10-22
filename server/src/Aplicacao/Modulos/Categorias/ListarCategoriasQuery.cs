@@ -1,9 +1,9 @@
 using FluentResults;
 using MediatR;
-using NoteKeeper.Aplicacao.Compartilhado;
-using NoteKeeper.Dominio.Modulos.Categorias;
+using NoteStack.Aplicacao.Compartilhado;
+using NoteStack.Dominio.Modulos.Categorias;
 
-namespace NoteKeeper.Aplicacao.Modulos.Categorias;
+namespace NoteStack.Aplicacao.Modulos.Categorias;
 
 public sealed record ListarCategoriasQuery(Guid UsuarioId)
     : IRequest<Result<IReadOnlyList<CategoriaDto>>>;

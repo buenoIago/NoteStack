@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using NoteKeeper.Dominio.Compartilhado;
-using NoteKeeper.Infraestrutura.Compartilhado.Orm;
+using NoteStack.Dominio.Compartilhado;
+using NoteStack.Infraestrutura.Compartilhado.Orm;
 
-namespace NoteKeeper.Infraestrutura.Compartilhado.Auth;
+namespace NoteStack.Infraestrutura.Compartilhado.Auth;
 
-public sealed class RevogacaoTokenEmOrm(NoteKeeperDbContext db) : IRevogacaoToken
+public sealed class RevogacaoTokenEmOrm(NoteStackDbContext db) : IRevogacaoToken
 {
     public async Task RevogarAsync(string jti, DateTime expiracaoUtc, CancellationToken ct)
     {

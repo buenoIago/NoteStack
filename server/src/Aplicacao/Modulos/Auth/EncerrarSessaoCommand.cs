@@ -1,8 +1,8 @@
 using FluentResults;
 using MediatR;
-using NoteKeeper.Dominio.Compartilhado;
+using NoteStack.Dominio.Compartilhado;
 
-namespace NoteKeeper.Aplicacao.Modulos.Auth;
+namespace NoteStack.Aplicacao.Modulos.Auth;
 
 public sealed record EncerrarSessaoCommand(string Jti, DateTime ExpiraEmUtc) : IRequest<Result>;
 

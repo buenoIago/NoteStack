@@ -4,12 +4,12 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using NoteKeeper.Api.Compartilhado.Auth;
-using NoteKeeper.Api.Compartilhado.Http;
-using NoteKeeper.Aplicacao;
-using NoteKeeper.Dominio.Compartilhado;
-using NoteKeeper.Infraestrutura;
-using NoteKeeper.Infraestrutura.Compartilhado.Orm;
+using NoteStack.Api.Compartilhado.Auth;
+using NoteStack.Api.Compartilhado.Http;
+using NoteStack.Aplicacao;
+using NoteStack.Dominio.Compartilhado;
+using NoteStack.Infraestrutura;
+using NoteStack.Infraestrutura.Compartilhado.Orm;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -90,12 +90,12 @@ builder.Services.AddCors(options => options.AddPolicy("Client", policy =>
 var app = builder.Build();
 
 app.MapOpenApi().AllowAnonymous();
-app.UseSwaggerUI(options => options.SwaggerEndpoint("/openapi/v1.json", "NoteKeeper API v1"));
+app.UseSwaggerUI(options => options.SwaggerEndpoint("/openapi/v1.json", "NoteStack API v1"));
 
 if (app.Environment.IsDevelopment())
 {
     using var scope = app.Services.CreateScope();
-    var db = scope.ServiceProvider.GetRequiredService<NoteKeeperDbContext>();
+    var db = scope.ServiceProvider.GetRequiredService<NoteStackDbContext>();
 
     if (db.Database.IsSqlServer())
     {

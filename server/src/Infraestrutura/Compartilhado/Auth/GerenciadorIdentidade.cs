@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using NoteKeeper.Dominio.Compartilhado;
-using NoteKeeper.Infraestrutura.Compartilhado.Orm;
+using NoteStack.Dominio.Compartilhado;
+using NoteStack.Infraestrutura.Compartilhado.Orm;
 
-namespace NoteKeeper.Infraestrutura.Compartilhado.Auth;
+namespace NoteStack.Infraestrutura.Compartilhado.Auth;
 
-public sealed class GerenciadorIdentidade(UserManager<NoteKeeperUser> userManager)
+public sealed class GerenciadorIdentidade(UserManager<NoteStackUser> userManager)
     : IGerenciadorIdentidade
 {
     public async Task<UsuarioDto> CadastrarAsync(
@@ -17,7 +17,7 @@ public sealed class GerenciadorIdentidade(UserManager<NoteKeeperUser> userManage
     {
         ct.ThrowIfCancellationRequested();
 
-        var user = new NoteKeeperUser
+        var user = new NoteStackUser
         {
             Id = Guid.CreateVersion7(),
             UserName = email,

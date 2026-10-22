@@ -16,7 +16,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="../../src/Aplicacao/NoteKeeper.Aplicacao.csproj" />
-    <ProjectReference Include="../../src/Dominio/NoteKeeper.Dominio.csproj" />
+    <ProjectReference Include="../../src/Aplicacao/NoteStack.Aplicacao.csproj" />
+    <ProjectReference Include="../../src/Dominio/NoteStack.Dominio.csproj" />
   </ItemGroup>
 </Project>

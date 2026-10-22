@@ -1,10 +1,10 @@
 using FluentResults;
 using MediatR;
-using NoteKeeper.Aplicacao.Compartilhado;
-using NoteKeeper.Dominio.Compartilhado;
-using NoteKeeper.Dominio.Modulos.Notas;
+using NoteStack.Aplicacao.Compartilhado;
+using NoteStack.Dominio.Compartilhado;
+using NoteStack.Dominio.Modulos.Notas;
 
-namespace NoteKeeper.Aplicacao.Modulos.Notas;
+namespace NoteStack.Aplicacao.Modulos.Notas;
 
 public sealed record ExcluirNotaCommand(Guid UsuarioId, Guid Id) : IRequest<Result>;
 

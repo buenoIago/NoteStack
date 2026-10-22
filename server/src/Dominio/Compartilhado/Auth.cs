@@ -1,4 +1,4 @@
-namespace NoteKeeper.Dominio.Compartilhado;
+namespace NoteStack.Dominio.Compartilhado;
 
 public sealed record UsuarioDto(Guid Id, string Nome, string Email);
 public sealed record TokenDto(

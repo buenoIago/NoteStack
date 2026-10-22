@@ -1,11 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace NoteKeeper.Infraestrutura.Compartilhado.Orm.Config;
+namespace NoteStack.Infraestrutura.Compartilhado.Orm.Config;
 
-public sealed class NoteKeeperUserConfiguration : IEntityTypeConfiguration<NoteKeeperUser>
+public sealed class NoteStackUserConfiguration : IEntityTypeConfiguration<NoteStackUser>
 {
-    public void Configure(EntityTypeBuilder<NoteKeeperUser> builder)
+    public void Configure(EntityTypeBuilder<NoteStackUser> builder)
     {
         builder.Property(usuario => usuario.Nome)
             .IsRequired();

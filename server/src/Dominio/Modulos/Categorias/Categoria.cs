@@ -1,7 +1,7 @@
-using NoteKeeper.Dominio.Compartilhado;
-using NoteKeeper.Dominio.Modulos.Notas;
+using NoteStack.Dominio.Compartilhado;
+using NoteStack.Dominio.Modulos.Notas;
 
-namespace NoteKeeper.Dominio.Modulos.Categorias;
+namespace NoteStack.Dominio.Modulos.Categorias;
 
 public sealed class Categoria
 {

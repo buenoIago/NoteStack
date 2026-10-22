@@ -1,4 +1,4 @@
-namespace NoteKeeper.Dominio.Modulos.Categorias;
+namespace NoteStack.Dominio.Modulos.Categorias;
 
 public interface IRepositorioCategoria
 {

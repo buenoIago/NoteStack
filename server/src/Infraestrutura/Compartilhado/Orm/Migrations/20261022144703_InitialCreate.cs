@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace NoteKeeper.Infraestrutura.Compartilhado.Orm.Migrations
+namespace NoteStack.Infraestrutura.Compartilhado.Orm.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration

@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace NoteKeeper.Infraestrutura.Compartilhado.Orm.Config;
+namespace NoteStack.Infraestrutura.Compartilhado.Orm.Config;
 
 public sealed class TokenRevogadoConfiguration : IEntityTypeConfiguration<TokenRevogado>
 {

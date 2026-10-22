@@ -1,19 +1,19 @@
 services:
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: NoteKeeper-sqlserver
+    container_name: NoteStack-sqlserver
     environment:
       ACCEPT_EULA: "Y"
-      MSSQL_SA_PASSWORD: "NoteKeeper@123"
+      MSSQL_SA_PASSWORD: "NoteStack@123"
       MSSQL_PID: "Developer"
     ports:
       - "1433:1433"
     volumes:
-      - NoteKeeper-sqlserver-data:/var/opt/mssql
+      - NoteStack-sqlserver-data:/var/opt/mssql
 
   rabbitmq:
     image: rabbitmq:4.3.5-management-alpine
-    container_name: NoteKeeper-rabbitmq
+    container_name: NoteStack-rabbitmq
     environment:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
@@ -22,4 +22,4 @@ services:
       - "15672:15672" # Painel de administração
 
 volumes:
-  NoteKeeper-sqlserver-data:
+  NoteStack-sqlserver-data:

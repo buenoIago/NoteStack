@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using NoteKeeper.Infraestrutura.Compartilhado.Orm;
+using NoteStack.Infraestrutura.Compartilhado.Orm;
 
 #nullable disable
 
-namespace NoteKeeper.Infraestrutura.Compartilhado.Orm.Migrations
+namespace NoteStack.Infraestrutura.Compartilhado.Orm.Migrations
 {
-    [DbContext(typeof(NoteKeeperDbContext))]
-    partial class NoteKeeperDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(NoteStackDbContext))]
+    partial class NoteStackDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -86,7 +86,7 @@ namespace NoteKeeper.Infraestrutura.Compartilhado.Orm.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("NoteKeeper.Dominio.Modulos.Categorias.Categoria", b =>
+            modelBuilder.Entity("NoteStack.Dominio.Modulos.Categorias.Categoria", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -113,7 +113,7 @@ namespace NoteKeeper.Infraestrutura.Compartilhado.Orm.Migrations
                     b.ToTable("Categorias");
                 });
 
-            modelBuilder.Entity("NoteKeeper.Dominio.Modulos.Notas.Nota", b =>
+            modelBuilder.Entity("NoteStack.Dominio.Modulos.Notas.Nota", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -155,7 +155,7 @@ namespace NoteKeeper.Infraestrutura.Compartilhado.Orm.Migrations
                     b.ToTable("Notas");
                 });
 
-            modelBuilder.Entity("NoteKeeper.Dominio.Modulos.Notas.NotaCategoria", b =>
+            modelBuilder.Entity("NoteStack.Dominio.Modulos.Notas.NotaCategoria", b =>
                 {
                     b.Property<Guid>("NotaId")
                         .HasColumnType("uniqueidentifier");
@@ -170,7 +170,7 @@ namespace NoteKeeper.Infraestrutura.Compartilhado.Orm.Migrations
                     b.ToTable("NotasCategorias");
                 });
 
-            modelBuilder.Entity("NoteKeeper.Infraestrutura.Compartilhado.Orm.NoteKeeperUser", b =>
+            modelBuilder.Entity("NoteStack.Infraestrutura.Compartilhado.Orm.NoteStackUser", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -240,7 +240,7 @@ namespace NoteKeeper.Infraestrutura.Compartilhado.Orm.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("NoteKeeper.Infraestrutura.Compartilhado.Orm.TokenRevogado", b =>
+            modelBuilder.Entity("NoteStack.Infraestrutura.Compartilhado.Orm.TokenRevogado", b =>
                 {
                     b.Property<string>("Jti")
                         .HasMaxLength(64)
@@ -258,7 +258,7 @@ namespace NoteKeeper.Infraestrutura.Compartilhado.Orm.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
                 {
-                    b.HasOne("NoteKeeper.Infraestrutura.Compartilhado.Orm.NoteKeeperUser", null)
+                    b.HasOne("NoteStack.Infraestrutura.Compartilhado.Orm.NoteStackUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -267,7 +267,7 @@ namespace NoteKeeper.Infraestrutura.Compartilhado.Orm.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
                 {
-                    b.HasOne("NoteKeeper.Infraestrutura.Compartilhado.Orm.NoteKeeperUser", null)
+                    b.HasOne("NoteStack.Infraestrutura.Compartilhado.Orm.NoteStackUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -276,40 +276,40 @@ namespace NoteKeeper.Infraestrutura.Compartilhado.Orm.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
                 {
-                    b.HasOne("NoteKeeper.Infraestrutura.Compartilhado.Orm.NoteKeeperUser", null)
+                    b.HasOne("NoteStack.Infraestrutura.Compartilhado.Orm.NoteStackUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("NoteKeeper.Dominio.Modulos.Categorias.Categoria", b =>
+            modelBuilder.Entity("NoteStack.Dominio.Modulos.Categorias.Categoria", b =>
                 {
-                    b.HasOne("NoteKeeper.Infraestrutura.Compartilhado.Orm.NoteKeeperUser", null)
+                    b.HasOne("NoteStack.Infraestrutura.Compartilhado.Orm.NoteStackUser", null)
                         .WithMany()
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("NoteKeeper.Dominio.Modulos.Notas.Nota", b =>
+            modelBuilder.Entity("NoteStack.Dominio.Modulos.Notas.Nota", b =>
                 {
-                    b.HasOne("NoteKeeper.Infraestrutura.Compartilhado.Orm.NoteKeeperUser", null)
+                    b.HasOne("NoteStack.Infraestrutura.Compartilhado.Orm.NoteStackUser", null)
                         .WithMany()
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("NoteKeeper.Dominio.Modulos.Notas.NotaCategoria", b =>
+            modelBuilder.Entity("NoteStack.Dominio.Modulos.Notas.NotaCategoria", b =>
                 {
-                    b.HasOne("NoteKeeper.Dominio.Modulos.Categorias.Categoria", "Categoria")
+                    b.HasOne("NoteStack.Dominio.Modulos.Categorias.Categoria", "Categoria")
                         .WithMany("NotasCategorias")
                         .HasForeignKey("CategoriaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NoteKeeper.Dominio.Modulos.Notas.Nota", "Nota")
+                    b.HasOne("NoteStack.Dominio.Modulos.Notas.Nota", "Nota")
                         .WithMany("NotasCategorias")
                         .HasForeignKey("NotaId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -320,12 +320,12 @@ namespace NoteKeeper.Infraestrutura.Compartilhado.Orm.Migrations
                     b.Navigation("Nota");
                 });
 
-            modelBuilder.Entity("NoteKeeper.Dominio.Modulos.Categorias.Categoria", b =>
+            modelBuilder.Entity("NoteStack.Dominio.Modulos.Categorias.Categoria", b =>
                 {
                     b.Navigation("NotasCategorias");
                 });
 
-            modelBuilder.Entity("NoteKeeper.Dominio.Modulos.Notas.Nota", b =>
+            modelBuilder.Entity("NoteStack.Dominio.Modulos.Notas.Nota", b =>
                 {
                     b.Navigation("NotasCategorias");
                 });

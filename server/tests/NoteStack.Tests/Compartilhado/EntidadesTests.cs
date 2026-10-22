@@ -1,8 +1,8 @@
-using NoteKeeper.Dominio.Modulos.Categorias;
-using NoteKeeper.Dominio.Modulos.Notas;
+using NoteStack.Dominio.Modulos.Categorias;
+using NoteStack.Dominio.Modulos.Notas;
 using Xunit;
 
-namespace NoteKeeper.Tests.Compartilhado;
+namespace NoteStack.Tests.Compartilhado;
 
 public sealed class EntidadesTests
 {

@@ -1,10 +1,10 @@
 using FluentResults;
 using MediatR;
-using NoteKeeper.Aplicacao.Compartilhado;
-using NoteKeeper.Dominio.Compartilhado;
-using NoteKeeper.Dominio.Modulos.Categorias;
+using NoteStack.Aplicacao.Compartilhado;
+using NoteStack.Dominio.Compartilhado;
+using NoteStack.Dominio.Modulos.Categorias;
 
-namespace NoteKeeper.Aplicacao.Modulos.Categorias;
+namespace NoteStack.Aplicacao.Modulos.Categorias;
 
 public sealed record ExcluirCategoriaCommand(Guid UsuarioId, Guid Id) : IRequest<Result>;
 

@@ -1,9 +1,9 @@
 using Moq;
-using NoteKeeper.Aplicacao.Modulos.Notas;
-using NoteKeeper.Dominio.Modulos.Notas;
+using NoteStack.Aplicacao.Modulos.Notas;
+using NoteStack.Dominio.Modulos.Notas;
 using Xunit;
 
-namespace NoteKeeper.Tests.Modulos.Notas;
+namespace NoteStack.Tests.Modulos.Notas;
 
 public sealed class NotaHandlerTests
 {

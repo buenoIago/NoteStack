@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using NoteKeeper.Dominio.Modulos.Categorias;
-using NoteKeeper.Dominio.Modulos.Notas;
+using NoteStack.Dominio.Modulos.Categorias;
+using NoteStack.Dominio.Modulos.Notas;
 
-namespace NoteKeeper.Infraestrutura.Compartilhado.Orm;
+namespace NoteStack.Infraestrutura.Compartilhado.Orm;
 
-public sealed class NoteKeeperDbContext(DbContextOptions<NoteKeeperDbContext> options)
-    : IdentityUserContext<NoteKeeperUser, Guid>(options)
+public sealed class NoteStackDbContext(DbContextOptions<NoteStackDbContext> options)
+    : IdentityUserContext<NoteStackUser, Guid>(options)
 {
     public DbSet<Categoria> Categorias => Set<Categoria>();
     public DbSet<Nota> Notas => Set<Nota>();
@@ -17,6 +17,6 @@ public sealed class NoteKeeperDbContext(DbContextOptions<NoteKeeperDbContext> op
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(NoteKeeperDbContext).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(NoteStackDbContext).Assembly);
     }
 }

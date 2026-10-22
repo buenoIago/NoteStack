@@ -1,6 +1,6 @@
-using NoteKeeper.Dominio.Modulos.Notas;
+using NoteStack.Dominio.Modulos.Notas;
 
-namespace NoteKeeper.Aplicacao.Modulos.Notas;
+namespace NoteStack.Aplicacao.Modulos.Notas;
 
 internal static class StatusNotaParser
 {

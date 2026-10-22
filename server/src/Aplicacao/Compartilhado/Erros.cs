@@ -1,7 +1,7 @@
 using FluentResults;
-using NoteKeeper.Dominio.Compartilhado;
+using NoteStack.Dominio.Compartilhado;
 
-namespace NoteKeeper.Aplicacao.Compartilhado;
+namespace NoteStack.Aplicacao.Compartilhado;
 
 public static class Erros
 {

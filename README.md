@@ -1,4 +1,4 @@
-# NoteKeeper
+# NoteStack
 
 [![.NET](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
 [![OpenAPI / Swagger](https://img.shields.io/badge/OpenAPI%20%2F%20Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)](https://swagger.io/)
@@ -11,7 +11,7 @@
 
 ## Introdução
 
-O NoteKeeper é uma aplicação para registrar e organizar anotações em um só lugar. A proposta é ajudar o usuário a guardar ideias e informações importantes de forma simples e fácil de encontrar. Para isso, as informações são organizadas em categorias e notas.
+O NoteStack é uma aplicação para registrar e organizar anotações em um só lugar. A proposta é ajudar o usuário a guardar ideias e informações importantes de forma simples e fácil de encontrar. Para isso, as informações são organizadas em categorias e notas.
 
 ## Módulo de Autenticação
 
@@ -70,15 +70,15 @@ O NoteKeeper é uma aplicação para registrar e organizar anotações em um só
 A API está em `server/` e usa .NET 10, ASP.NET Core Identity, JWT Bearer, EF Core e SQL Server. Para executar, configure uma connection string SQL Server e uma chave JWT (mínimo 32 bytes) usando User Secrets:
 
 ```bash
-dotnet user-secrets set "ConnectionStrings:SqlServer" "<connection-string-sql-server>" --project server/src/Api/NoteKeeper.Api.csproj
-dotnet user-secrets set "Jwt:SigningKey" "<chave-aleatoria-com-pelo-menos-32-bytes>" --project server/src/Api/NoteKeeper.Api.csproj
-dotnet user-secrets set "LuckyPenny:LicenseKey" "<chave-de-licença-do-lucky-penny>" --project server/src/Api/NoteKeeper.Api.csproj
+dotnet user-secrets set "ConnectionStrings:SqlServer" "<connection-string-sql-server>" --project server/src/Api/NoteStack.Api.csproj
+dotnet user-secrets set "Jwt:SigningKey" "<chave-aleatoria-com-pelo-menos-32-bytes>" --project server/src/Api/NoteStack.Api.csproj
+dotnet user-secrets set "LuckyPenny:LicenseKey" "<chave-de-licença-do-lucky-penny>" --project server/src/Api/NoteStack.Api.csproj
 dotnet tool restore --tool-manifest server/dotnet-tools.json
-dotnet ef database update --project server/src/Infraestrutura/NoteKeeper.Infraestrutura.csproj --startup-project server/src/Api/NoteKeeper.Api.csproj
-dotnet run --project server/src/Api/NoteKeeper.Api.csproj
+dotnet ef database update --project server/src/Infraestrutura/NoteStack.Infraestrutura.csproj --startup-project server/src/Api/NoteStack.Api.csproj
+dotnet run --project server/src/Api/NoteStack.Api.csproj
 ```
 
-Em desenvolvimento, a API aplica as migrations na inicialização. O Swagger/OpenAPI fica disponível em `/swagger`; exemplos de chamadas estão em `server/src/Api/NoteKeeper.Api.http`.
+Em desenvolvimento, a API aplica as migrations na inicialização. O Swagger/OpenAPI fica disponível em `/swagger`; exemplos de chamadas estão em `server/src/Api/NoteStack.Api.http`.
 
 | Método                 | Rota               | Acesso  | Operação                            |
 | ---------------------- | ------------------ | ------- | ----------------------------------- |
@@ -100,6 +100,6 @@ Os casos de uso da camada de aplicação são implementados como requests e hand
 Build e testes:
 
 ```bash
-dotnet build server/NoteKeeper.slnx --configuration Release
-dotnet test server/NoteKeeper.slnx
+dotnet build server/NoteStack.slnx --configuration Release
+dotnet test server/NoteStack.slnx
 ```

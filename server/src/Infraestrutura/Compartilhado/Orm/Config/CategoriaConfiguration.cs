@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using NoteKeeper.Dominio.Modulos.Categorias;
+using NoteStack.Dominio.Modulos.Categorias;
 
-namespace NoteKeeper.Infraestrutura.Compartilhado.Orm.Config;
+namespace NoteStack.Infraestrutura.Compartilhado.Orm.Config;
 
 public sealed class CategoriaConfiguration : IEntityTypeConfiguration<Categoria>
 {
@@ -21,7 +21,7 @@ public sealed class CategoriaConfiguration : IEntityTypeConfiguration<Categoria>
         builder.HasIndex(categoria => new { categoria.UsuarioId, categoria.TituloNormalizado })
             .IsUnique();
 
-        builder.HasOne<NoteKeeperUser>()
+        builder.HasOne<NoteStackUser>()
             .WithMany()
             .HasForeignKey(categoria => categoria.UsuarioId)
             .OnDelete(DeleteBehavior.Restrict);

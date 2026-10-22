@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using NoteKeeper.Dominio.Modulos.Notas;
-using NoteKeeper.Infraestrutura.Compartilhado.Orm;
+using NoteStack.Dominio.Modulos.Notas;
+using NoteStack.Infraestrutura.Compartilhado.Orm;
 
-namespace NoteKeeper.Infraestrutura.Modulos.Notas;
+namespace NoteStack.Infraestrutura.Modulos.Notas;
 
-public sealed class RepositorioNotaEmOrm(NoteKeeperDbContext db) : IRepositorioNota
+public sealed class RepositorioNotaEmOrm(NoteStackDbContext db) : IRepositorioNota
 {
     public async Task SalvarAsync(
         Nota nota,

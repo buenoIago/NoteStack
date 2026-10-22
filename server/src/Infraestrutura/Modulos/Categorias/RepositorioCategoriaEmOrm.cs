@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using NoteKeeper.Dominio.Modulos.Categorias;
-using NoteKeeper.Infraestrutura.Compartilhado.Orm;
+using NoteStack.Dominio.Modulos.Categorias;
+using NoteStack.Infraestrutura.Compartilhado.Orm;
 
-namespace NoteKeeper.Infraestrutura.Modulos.Categorias;
+namespace NoteStack.Infraestrutura.Modulos.Categorias;
 
-public sealed class RepositorioCategoriaEmOrm(NoteKeeperDbContext db) : IRepositorioCategoria
+public sealed class RepositorioCategoriaEmOrm(NoteStackDbContext db) : IRepositorioCategoria
 {
     public async Task SalvarAsync(Categoria categoria, CancellationToken ct)
     {

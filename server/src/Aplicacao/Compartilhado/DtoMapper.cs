@@ -1,7 +1,7 @@
-using NoteKeeper.Dominio.Modulos.Categorias;
-using NoteKeeper.Dominio.Modulos.Notas;
+using NoteStack.Dominio.Modulos.Categorias;
+using NoteStack.Dominio.Modulos.Notas;
 
-namespace NoteKeeper.Aplicacao.Compartilhado;
+namespace NoteStack.Aplicacao.Compartilhado;
 
 public static class DtoMapper
 {

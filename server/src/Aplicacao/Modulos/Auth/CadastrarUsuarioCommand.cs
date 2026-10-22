@@ -1,9 +1,9 @@
 using FluentResults;
 using MediatR;
-using NoteKeeper.Aplicacao.Compartilhado;
-using NoteKeeper.Dominio.Compartilhado;
+using NoteStack.Aplicacao.Compartilhado;
+using NoteStack.Dominio.Compartilhado;
 
-namespace NoteKeeper.Aplicacao.Modulos.Auth;
+namespace NoteStack.Aplicacao.Modulos.Auth;
 
 public sealed record CadastrarUsuarioCommand(string? Nome, string? Email, string? Senha)
     : IRequest<Result<UsuarioDto>>;

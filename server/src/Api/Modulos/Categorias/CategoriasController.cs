@@ -1,11 +1,11 @@
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Mvc;
-using NoteKeeper.Api.Compartilhado.Http;
+using NoteStack.Api.Compartilhado.Http;
 using MediatR;
-using NoteKeeper.Aplicacao.Modulos.Categorias;
+using NoteStack.Aplicacao.Modulos.Categorias;
 
-namespace NoteKeeper.Api.Modulos.Categorias;
+namespace NoteStack.Api.Modulos.Categorias;
 
 public sealed record CategoriaRequest(string? Titulo);
 

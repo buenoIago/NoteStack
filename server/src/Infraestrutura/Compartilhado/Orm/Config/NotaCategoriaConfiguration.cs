@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using NoteKeeper.Dominio.Modulos.Notas;
+using NoteStack.Dominio.Modulos.Notas;
 
-namespace NoteKeeper.Infraestrutura.Compartilhado.Orm.Config;
+namespace NoteStack.Infraestrutura.Compartilhado.Orm.Config;
 
 public sealed class NotaCategoriaConfiguration : IEntityTypeConfiguration<NotaCategoria>
 {

@@ -3,7 +3,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>NoteKeeper</UserSecretsId>
+    <UserSecretsId>NoteStack</UserSecretsId>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
   </PropertyGroup>
@@ -16,7 +16,7 @@
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.3.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="../Aplicacao/NoteKeeper.Aplicacao.csproj" />
-    <ProjectReference Include="../Infraestrutura/NoteKeeper.Infraestrutura.csproj" />
+    <ProjectReference Include="../Aplicacao/NoteStack.Aplicacao.csproj" />
+    <ProjectReference Include="../Infraestrutura/NoteStack.Infraestrutura.csproj" />
   </ItemGroup>
 </Project>

@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "NoteKeeper": {
+    "NoteStack": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:class": {
@@ -82,10 +82,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "NoteKeeper:build:production"
+              "buildTarget": "NoteStack:build:production"
             },
             "development": {
-              "buildTarget": "NoteKeeper:build:development"
+              "buildTarget": "NoteStack:build:development"
             }
           },
           "defaultConfiguration": "development"

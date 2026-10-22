@@ -1,25 +1,25 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using NoteKeeper.Infraestrutura.Compartilhado.Orm;
+using NoteStack.Infraestrutura.Compartilhado.Orm;
 
-namespace NoteKeeper.Api.Compartilhado.Orm;
+namespace NoteStack.Api.Compartilhado.Orm;
 
-public sealed class NoteKeeperDbContextFactory : IDesignTimeDbContextFactory<NoteKeeperDbContext>
+public sealed class NoteStackDbContextFactory : IDesignTimeDbContextFactory<NoteStackDbContext>
 {
-    public NoteKeeperDbContext CreateDbContext(string[] args)
+    public NoteStackDbContext CreateDbContext(string[] args)
     {
         var configuration = new ConfigurationBuilder()
-            .AddUserSecrets<NoteKeeperDbContextFactory>(optional: true)
+            .AddUserSecrets<NoteStackDbContextFactory>(optional: true)
             .AddEnvironmentVariables()
             .Build();
 
         var connection = configuration.GetConnectionString("SqlServer")
-            ?? "Server=localhost;Database=NoteKeeperDb;User Id=sa;Password=CrieUmaSenhaForte@123!;TrustServerCertificate=True";
+            ?? "Server=localhost;Database=NoteStackDb;User Id=sa;Password=CrieUmaSenhaForte@123!;TrustServerCertificate=True";
 
-        var options = new DbContextOptionsBuilder<NoteKeeperDbContext>()
+        var options = new DbContextOptionsBuilder<NoteStackDbContext>()
             .UseSqlServer(connection)
             .Options;
 
-        return new NoteKeeperDbContext(options);
+        return new NoteStackDbContext(options);
     }
 }

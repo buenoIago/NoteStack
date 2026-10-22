@@ -1,6 +1,6 @@
-using NoteKeeper.Dominio.Compartilhado;
+using NoteStack.Dominio.Compartilhado;
 
-namespace NoteKeeper.Dominio.Modulos.Notas;
+namespace NoteStack.Dominio.Modulos.Notas;
 
 public sealed class Nota
 {

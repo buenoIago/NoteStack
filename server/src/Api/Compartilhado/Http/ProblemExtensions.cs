@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using FluentResults;
-using NoteKeeper.Dominio.Compartilhado;
+using NoteStack.Dominio.Compartilhado;
 
-namespace NoteKeeper.Api.Compartilhado.Http;
+namespace NoteStack.Api.Compartilhado.Http;
 
 public static class ProblemExtensions
 {

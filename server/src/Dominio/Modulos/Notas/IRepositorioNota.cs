@@ -1,4 +1,4 @@
-namespace NoteKeeper.Dominio.Modulos.Notas;
+namespace NoteStack.Dominio.Modulos.Notas;
 
 public interface IRepositorioNota
 {

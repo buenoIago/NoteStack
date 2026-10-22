@@ -1,9 +1,9 @@
 using Moq;
-using NoteKeeper.Aplicacao.Modulos.Auth;
-using NoteKeeper.Dominio.Compartilhado;
+using NoteStack.Aplicacao.Modulos.Auth;
+using NoteStack.Dominio.Compartilhado;
 using Xunit;
 
-namespace NoteKeeper.Tests.Modulos.Auth;
+namespace NoteStack.Tests.Modulos.Auth;
 
 public sealed class AuthHandlerTests
 {

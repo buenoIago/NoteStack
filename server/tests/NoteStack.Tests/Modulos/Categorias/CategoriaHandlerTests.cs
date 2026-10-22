@@ -1,9 +1,9 @@
 using Moq;
-using NoteKeeper.Aplicacao.Modulos.Categorias;
-using NoteKeeper.Dominio.Modulos.Categorias;
+using NoteStack.Aplicacao.Modulos.Categorias;
+using NoteStack.Dominio.Modulos.Categorias;
 using Xunit;
 
-namespace NoteKeeper.Tests.Modulos.Categorias;
+namespace NoteStack.Tests.Modulos.Categorias;
 
 public sealed class CategoriaHandlerTests
 {

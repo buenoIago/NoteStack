@@ -1,4 +1,4 @@
-namespace NoteKeeper.Infraestrutura.Compartilhado.Orm;
+namespace NoteStack.Infraestrutura.Compartilhado.Orm;
 
 public sealed class TokenRevogado
 {

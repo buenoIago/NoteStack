@@ -3,9 +3,9 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using NoteKeeper.Dominio.Compartilhado;
+using NoteStack.Dominio.Compartilhado;
 
-namespace NoteKeeper.Api.Compartilhado.Auth;
+namespace NoteStack.Api.Compartilhado.Auth;
 
 public sealed class JwtTokenGenerator(IOptions<JwtOptions> options) : IEmissorTokens
 {

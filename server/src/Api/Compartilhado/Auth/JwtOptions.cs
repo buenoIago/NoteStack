@@ -1,4 +1,4 @@
-namespace NoteKeeper.Api.Compartilhado.Auth;
+namespace NoteStack.Api.Compartilhado.Auth;
 
 public sealed class JwtOptions
 {

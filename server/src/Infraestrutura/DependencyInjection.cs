@@ -2,15 +2,15 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using NoteKeeper.Dominio.Compartilhado;
-using NoteKeeper.Dominio.Modulos.Categorias;
-using NoteKeeper.Dominio.Modulos.Notas;
-using NoteKeeper.Infraestrutura.Compartilhado.Auth;
-using NoteKeeper.Infraestrutura.Compartilhado.Orm;
-using NoteKeeper.Infraestrutura.Modulos.Categorias;
-using NoteKeeper.Infraestrutura.Modulos.Notas;
+using NoteStack.Dominio.Compartilhado;
+using NoteStack.Dominio.Modulos.Categorias;
+using NoteStack.Dominio.Modulos.Notas;
+using NoteStack.Infraestrutura.Compartilhado.Auth;
+using NoteStack.Infraestrutura.Compartilhado.Orm;
+using NoteStack.Infraestrutura.Modulos.Categorias;
+using NoteStack.Infraestrutura.Modulos.Notas;
 
-namespace NoteKeeper.Infraestrutura;
+namespace NoteStack.Infraestrutura;
 
 public static class DependencyInjection
 {
@@ -22,10 +22,10 @@ public static class DependencyInjection
             throw new InvalidOperationException("Connection string \"SqlServer\" não configurada.");
         }
 
-        services.AddDbContext<NoteKeeperDbContext>(options =>
+        services.AddDbContext<NoteStackDbContext>(options =>
             options.UseSqlServer(connection, sql => sql.EnableRetryOnFailure(3)));
 
-        services.AddIdentityCore<NoteKeeperUser>(options =>
+        services.AddIdentityCore<NoteStackUser>(options =>
         {
             options.User.RequireUniqueEmail = true;
 
@@ -38,7 +38,7 @@ public static class DependencyInjection
             options.Lockout.MaxFailedAccessAttempts = 5;
             options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
             options.Lockout.AllowedForNewUsers = true;
-        }).AddEntityFrameworkStores<NoteKeeperDbContext>();
+        }).AddEntityFrameworkStores<NoteStackDbContext>();
 
         services.AddScoped<IGerenciadorIdentidade, GerenciadorIdentidade>();
         services.AddScoped<IRevogacaoToken, RevogacaoTokenEmOrm>();

@@ -3,10 +3,10 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
-using NoteKeeper.Api.Compartilhado.Http;
-using NoteKeeper.Aplicacao.Modulos.Auth;
+using NoteStack.Api.Compartilhado.Http;
+using NoteStack.Aplicacao.Modulos.Auth;
 
-namespace NoteKeeper.Api.Modulos.Auth;
+namespace NoteStack.Api.Modulos.Auth;
 
 public sealed record CadastroRequest(string? Nome, string? Email, string? Senha);
 public sealed record LoginRequest(string? Email, string? Senha);
