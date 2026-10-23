@@ -6,4 +6,6 @@ import { RouterLink } from '@angular/router';
   selector: 'app-navbar',
   templateUrl: './navbar.html',
 })
-export class Navbar {}
+export class Navbar {
+  login = false;
+}
