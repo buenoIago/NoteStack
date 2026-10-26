@@ -1,0 +1,160 @@
+<main class="min-h-screen bg-[#f4f6fb] text-slate-900">
+
+  <app-navbar></app-navbar>
+
+  <div class="ml-48 grid min-h-screen grid-cols-2">
+
+    <section class="flex items-center justify-center px-12">
+
+      <div class="max-w-lg">
+
+        <p class="text-sm font-semibold text-indigo-600">
+          NoteStack
+        </p>
+
+        @if (cadastro) {
+          <h1 class="mt-4 text-4xl font-semibold leading-tight text-slate-900">
+            Comece a organizar suas ideias.
+          </h1>
+
+          <p class="mt-4 text-lg leading-8 text-slate-500">
+            Crie sua conta e tenha um espaço para manter suas notas e categorias organizadas.
+          </p>
+        }
+        @else {
+          <h1 class="mt-4 text-4xl font-semibold leading-tight text-slate-900">
+            Suas anotações estão esperando por você.
+          </h1>
+
+          <p class="mt-4 text-lg leading-8 text-slate-500">
+            Entre na sua conta para acessar suas notas e categorias.
+          </p>
+        }
+
+      </div>
+
+    </section>
+
+    <section class="flex items-center justify-center bg-white px-12">
+
+      <div class="w-full max-w-md">
+
+        <div class="mb-8">
+
+          @if (cadastro) {
+            <h2 class="text-3xl font-semibold">
+              Criar conta
+            </h2>
+
+            <p class="mt-2 text-slate-500">
+              Preencha seus dados para começar a usar o NoteStack.
+            </p>
+          }
+          @else {
+            <h2 class="text-3xl font-semibold">
+              Entrar
+            </h2>
+
+            <p class="mt-2 text-slate-500">
+              Informe seus dados para acessar sua conta.
+            </p>
+          }
+
+        </div>
+
+        <form class="space-y-5">
+
+          @if (cadastro) {
+            <div>
+              <label
+                for="nome"
+                class="mb-2 block text-sm font-medium text-slate-700">
+                Nome
+              </label>
+
+              <input
+                id="nome"
+                type="text"
+                placeholder="Seu nome"
+                class="w-full rounded-lg border border-slate-300 px-4 py-3
+                       outline-none transition-colors
+                       focus:border-indigo-600" />
+            </div>
+          }
+
+          <div>
+            <label
+              for="email"
+              class="mb-2 block text-sm font-medium text-slate-700">
+              E-mail
+            </label>
+
+            <input
+              id="email"
+              type="email"
+              placeholder="seu@email.com"
+              class="w-full rounded-lg border border-slate-300 px-4 py-3
+                     outline-none transition-colors
+                     focus:border-indigo-600" />
+          </div>
+
+          <div>
+            <label
+              for="senha"
+              class="mb-2 block text-sm font-medium text-slate-700">
+              Senha
+            </label>
+
+            <input
+              id="senha"
+              type="password"
+              placeholder="Digite sua senha"
+              class="w-full rounded-lg border border-slate-300 px-4 py-3
+                     outline-none transition-colors
+                     focus:border-indigo-600" />
+          </div>
+
+          <button
+            type="submit"
+            class="w-full cursor-pointer rounded-lg bg-indigo-700 px-5 py-3
+                   font-medium text-white transition-colors
+                   hover:bg-indigo-800">
+
+            @if (cadastro) {
+              Criar conta
+            }
+            @else {
+              Entrar
+            }
+
+          </button>
+
+        </form>
+
+        <p class="mt-6 text-center text-sm text-slate-500">
+
+        @if (cadastro) {
+            Já possui uma conta?
+
+            <a
+            routerLink="/login"
+            class="cursor-pointer font-medium text-indigo-700 hover:text-indigo-800">
+            Entrar
+            </a>
+        }
+        @else {
+            Ainda não possui uma conta?
+
+            <a
+            routerLink="/cadastro"
+            class="font-medium text-indigo-700 hover:text-indigo-800">
+            Criar conta
+            </a>
+        }
+
+        </p>
+
+      </div>
+    </section>
+  </div>
+</main>
