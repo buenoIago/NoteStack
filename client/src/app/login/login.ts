@@ -1,17 +1,43 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Navbar } from '../shared/navbar/navbar';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Auth } from '../services/auth';
 
 @Component({
-  imports: [Navbar, RouterLink],
+  imports: [Navbar, RouterLink, FormsModule],
   selector: 'app-login',
   templateUrl: './login.html',
 })
-
 export class Login {
   cadastro = false;
 
-  constructor(private route: ActivatedRoute) {
+  nome = '';
+  email = '';
+  senha = '';
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private auth: Auth
+  ) {
     this.cadastro = this.route.snapshot.routeConfig?.path === 'cadastro';
+  }
+
+  cadastrar() {
+    const request = {
+      nome: this.nome,
+      email: this.email,
+      senha: this.senha
+    };
+
+    this.auth.cadastrar(request).subscribe({
+      next: () => {
+        this.router.navigate(['/login']);
+      },
+      error: (erro) => {
+        console.error(erro);
+      }
+    });
   }
 }

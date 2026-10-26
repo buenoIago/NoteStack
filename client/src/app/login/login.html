@@ -75,6 +75,8 @@
               <input
                 id="nome"
                 type="text"
+                name="nome"
+                [(ngModel)]="nome"
                 placeholder="Seu nome"
                 class="w-full rounded-lg border border-slate-300 px-4 py-3
                        outline-none transition-colors
@@ -92,6 +94,8 @@
             <input
               id="email"
               type="email"
+              name="email"
+              [(ngModel)]="email"
               placeholder="seu@email.com"
               class="w-full rounded-lg border border-slate-300 px-4 py-3
                      outline-none transition-colors
@@ -108,6 +112,8 @@
             <input
               id="senha"
               type="password"
+              name="senha"
+              [(ngModel)]="senha"
               placeholder="Digite sua senha"
               class="w-full rounded-lg border border-slate-300 px-4 py-3
                      outline-none transition-colors
@@ -115,7 +121,8 @@
           </div>
 
           <button
-            type="submit"
+            type="button"
+            (click)="cadastro && cadastrar()"
             class="w-full cursor-pointer rounded-lg bg-indigo-700 px-5 py-3
                    font-medium text-white transition-colors
                    hover:bg-indigo-800">
@@ -133,28 +140,31 @@
 
         <p class="mt-6 text-center text-sm text-slate-500">
 
-        @if (cadastro) {
+          @if (cadastro) {
             Já possui uma conta?
 
             <a
-            routerLink="/login"
-            class="cursor-pointer font-medium text-indigo-700 hover:text-indigo-800">
-            Entrar
+              routerLink="/login"
+              class="cursor-pointer font-medium text-indigo-700 hover:text-indigo-800">
+              Entrar
             </a>
-        }
-        @else {
+          }
+          @else {
             Ainda não possui uma conta?
 
             <a
-            routerLink="/cadastro"
-            class="font-medium text-indigo-700 hover:text-indigo-800">
-            Criar conta
+              routerLink="/cadastro"
+              class="cursor-pointer font-medium text-indigo-700 hover:text-indigo-800">
+              Criar conta
             </a>
-        }
+          }
 
         </p>
 
       </div>
+
     </section>
+
   </div>
+
 </main>
