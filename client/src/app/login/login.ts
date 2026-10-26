@@ -40,4 +40,24 @@ export class Login {
       }
     });
   }
+
+  entrar() {
+    const request = {
+      email: this.email,
+      senha: this.senha
+    };
+
+    this.auth.login(request).subscribe({
+      next: (token) => {
+        localStorage.setItem('accessToken', token.accessToken);
+
+        console.log(token);
+
+        this.router.navigate(['/']);
+      },
+      error: (erro) => {
+        console.error(erro);
+      }
+    });
+  }
 }

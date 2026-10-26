@@ -122,7 +122,7 @@
 
           <button
             type="button"
-            (click)="cadastro && cadastrar()"
+            (click)="cadastro ? cadastrar() : entrar()"
             class="w-full cursor-pointer rounded-lg bg-indigo-700 px-5 py-3
                    font-medium text-white transition-colors
                    hover:bg-indigo-800">
