@@ -33,19 +33,20 @@
 
   @if (login) {
 
-    <a
-      routerLink="/login"
-      class="rounded-lg border border-slate-200 px-4 py-2.5 text-center
+    <button
+      type="button"
+      (click)="sair()"
+        class="cursor-pointer rounded-lg border border-slate-200 px-4 py-2.5 text-center
             text-sm font-medium text-slate-600 transition-colors
             hover:bg-slate-50 hover:text-slate-900">
       Sair
-    </a>
+    </button>
 
   } @else {
 
     <a
       routerLink="/login"
-      class="rounded-lg bg-indigo-700 px-4 py-2.5 text-center
+        class="cursor-pointer rounded-lg bg-indigo-700 px-4 py-2.5 text-center
             text-sm font-medium text-white transition-colors
             hover:bg-indigo-800">
       Entrar

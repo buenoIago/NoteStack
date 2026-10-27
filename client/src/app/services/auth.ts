@@ -45,4 +45,8 @@ export class Auth {
   me() {
   return this.http.get<UsuarioDto>(`${this.apiUrl}/me`);
   }
+
+  logout() {
+  return this.http.post<void>(`${this.apiUrl}/logout`, {});
+  }
 }

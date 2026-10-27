@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Auth, UsuarioDto } from '../../services/auth';
 
 @Component({
@@ -11,7 +11,10 @@ export class Navbar {
   login = false;
   usuario: UsuarioDto | null = null;
 
-  constructor(private auth: Auth) {
+  constructor(  
+    private auth: Auth, 
+    private router: Router
+  ) {
     this.carregarUsuario();
   }
 
@@ -31,6 +34,22 @@ export class Navbar {
         this.usuario = null;
         this.login = false;
         localStorage.removeItem('accessToken');
+      }
+    });
+  }
+
+  sair() {
+    this.auth.logout().subscribe({
+      next: () => {
+        localStorage.removeItem('accessToken');
+
+        this.usuario = null;
+        this.login = false;
+
+        this.router.navigate(['/login']);
+      },
+      error: (erro) => {
+        console.error(erro);
       }
     });
   }

@@ -1,7 +1,7 @@
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter, Routes } from '@angular/router';
-import { authInterceptor } from './interceptors/auth.interceptor.ts';
+import { authInterceptor } from './interceptors/auth.interceptor';
 
 const routes: Routes = [
   {
