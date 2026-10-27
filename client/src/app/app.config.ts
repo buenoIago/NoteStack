@@ -42,6 +42,20 @@ const routes: Routes = [
       import('./categorias/listar/listar-categorias')
         .then((c) => c.ListarCategorias),
   },
+
+  {
+    path: 'categorias/cadastrar',
+    loadComponent: () =>
+      import('./categorias/cadastrar/cadastrar-categorias')
+        .then((c) => c.CadastrarCategoria),
+  },
+
+  {
+    path: 'categorias/:categoriaId',
+    loadComponent: () =>
+      import('./categorias/detalhes/detalhes-categorias')
+        .then((c) => c.DetalhesCategorias),
+  },
 ];
 
 export const appConfig: ApplicationConfig = {

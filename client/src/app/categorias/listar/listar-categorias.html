@@ -44,10 +44,10 @@
 
           <p class="text-sm text-slate-500">
             <span class="font-semibold text-slate-900">
-              {{ categorias.length }}
+              {{ categorias().length }}
             </span>
 
-            @if (categorias.length === 1) {
+            @if (categorias().length === 1) {
               categoria
             }
             @else {
@@ -67,11 +67,55 @@
         </div>
       </div>
 
-      @if (categorias.length > 0) {
+      @if (mensagemErro()) {
+
+        <div class="border-t border-slate-200 py-20">
+
+          <div class="max-w-md">
+
+            <p class="text-sm font-semibold text-red-600">
+              Não foi possível carregar
+            </p>
+
+            <h2 class="mt-3 text-2xl font-semibold text-slate-900">
+              Algo deu errado.
+            </h2>
+
+            <p class="mt-3 leading-7 text-slate-500">
+              {{ mensagemErro() }}
+            </p>
+
+          </div>
+        </div>
+
+      }
+      @else if (carregando()) {
+
+        <div class="border-t border-slate-200 py-20">
+
+          <div class="max-w-md">
+
+            <p class="text-sm font-semibold text-indigo-600">
+              Carregando
+            </p>
+
+            <h2 class="mt-3 text-2xl font-semibold text-slate-900">
+              Buscando suas categorias...
+            </h2>
+
+            <p class="mt-3 leading-7 text-slate-500">
+              Aguarde enquanto carregamos suas informações.
+            </p>
+
+          </div>
+        </div>
+
+      }
+      @else if (categorias().length > 0) {
 
         <div class="border-t border-slate-200">
 
-          @for (categoria of categorias; track categoria.id) {
+          @for (categoria of categorias(); track categoria.id) {
 
             <article
               class="group border-b border-slate-200 py-6
@@ -95,29 +139,17 @@
 
                 </div>
 
-                <div class="flex flex-col items-end justify-between">
+                <div class="flex items-center">
 
-                  <div
-                    class="flex gap-4 opacity-0 transition-opacity
-                           group-hover:opacity-100">
-
-                    <button
-                      type="button"
-                      class="cursor-pointer text-sm font-medium text-slate-500
-                             hover:text-indigo-700">
-                      Editar
-                    </button>
-
-                    <button
-                      type="button"
-                      class="cursor-pointer text-sm font-medium text-slate-500
-                             hover:text-red-600">
-                      Excluir
-                    </button>
-
-                  </div>
+                  <a
+                    [routerLink]="['/categorias', categoria.id]"
+                    class="text-sm font-medium text-slate-500
+                           transition-colors hover:text-indigo-700">
+                    Ver detalhes
+                  </a>
 
                 </div>
+
               </div>
             </article>
 
