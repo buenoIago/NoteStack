@@ -1,0 +1,155 @@
+<main class="min-h-screen bg-[#f4f6fb] text-slate-900">
+
+  <app-navbar></app-navbar>
+
+  <div class="ml-48 min-h-screen">
+
+    <header class="border-b border-slate-200 bg-white">
+
+      <div class="px-10 py-10">
+
+        <a
+          routerLink="/notas"
+          class="text-sm font-medium text-slate-500 transition-colors
+                 hover:text-indigo-700">
+          ← Voltar para notas
+        </a>
+
+        <p class="mt-8 text-sm font-semibold uppercase tracking-wider text-indigo-600">
+          Nova nota
+        </p>
+
+        <h1 class="mt-3 text-4xl font-semibold leading-tight text-slate-900">
+          Coloque uma ideia
+          <span class="text-indigo-700">no papel.</span>
+        </h1>
+
+        <p class="mt-4 max-w-lg text-slate-500">
+          Registre o que importa agora. Você pode organizar e atualizar sua nota depois.
+        </p>
+
+      </div>
+
+    </header>
+
+    <section class="max-w-4xl px-10 py-10">
+
+      <form class="space-y-10">
+
+        <div>
+
+          <label
+            for="titulo"
+            class="text-xs font-semibold uppercase tracking-wider text-slate-500">
+            Título
+          </label>
+
+          <input
+            id="titulo"
+            name="titulo"
+            type="text"
+            [(ngModel)]="titulo"
+            class="mt-3 w-full border-0 border-b border-slate-300
+                   bg-transparent px-0 py-3 text-xl font-medium
+                   text-slate-900 outline-none transition-colors
+                   placeholder:text-slate-400
+                   focus:border-indigo-700" />
+
+        </div>
+
+        <div>
+
+          <label
+            for="descricao"
+            class="text-xs font-semibold uppercase tracking-wider text-slate-500">
+            Descrição
+          </label>
+
+          <textarea
+            id="descricao"
+            name="descricao"
+            [(ngModel)]="descricao"
+            rows="6"
+            placeholder="Escreva sua anotação..."
+            class="mt-3 w-full resize-none border-0 border-b
+                   border-slate-300 bg-transparent px-0 py-3
+                   leading-7 text-slate-700 outline-none
+                   transition-colors placeholder:text-slate-400
+                   focus:border-indigo-700"></textarea>
+
+        </div>
+
+        <div>
+
+          <div class="mb-4">
+
+            <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">
+              Categorias
+            </p>
+
+            <p class="mt-2 text-sm text-slate-400">
+              Selecione uma ou mais categorias para organizar sua nota.
+            </p>
+
+          </div>
+
+          @if (categorias.length > 0) {
+
+            <div class="flex flex-wrap gap-2">
+
+              @for (categoria of categorias; track categoria.id) {
+
+                <button
+                  type="button"
+                  (click)="selecionarCategoria(categoria.id)"
+                  [class.bg-indigo-700]="categoriaSelecionada(categoria.id)"
+                  [class.text-white]="categoriaSelecionada(categoria.id)"
+                  [class.border-indigo-700]="categoriaSelecionada(categoria.id)"
+                  class="cursor-pointer rounded-md border border-slate-300
+                         px-3 py-2 text-sm font-medium text-slate-600
+                         transition-colors hover:border-indigo-600
+                         hover:text-indigo-700">
+
+                  {{ categoria.titulo }}
+
+                </button>
+
+              }
+
+            </div>
+
+          }
+          @else {
+
+            <p class="text-sm text-slate-400">
+              Você ainda não possui categorias cadastradas.
+            </p>
+
+          }
+
+        </div>
+
+        <div class="flex items-center justify-between border-t border-slate-200 pt-6">
+
+          <a
+            routerLink="/notas"
+            class="text-sm font-medium text-slate-500 transition-colors
+                   hover:text-slate-900">
+            Cancelar
+          </a>
+
+        <button
+          type="button"
+          (click)="cadastrar()"
+          class="cursor-pointer rounded-lg bg-[#101b36] px-6 py-3
+                text-sm font-medium text-white transition-colors
+                hover:bg-[#18284d]">
+          Criar nota
+        </button>
+
+        </div>
+
+      </form>
+    </section>
+  </div>
+</main>

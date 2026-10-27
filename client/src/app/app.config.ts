@@ -13,10 +13,22 @@ const routes: Routes = [
     path: 'login',
     loadComponent: () => import('./Auth/login/login').then((c) => c.Login),
   },
+
   {
     path: 'cadastro',
     loadComponent: () => import('./Auth/login/login').then((c) => c.Login),
-  }
+  },
+  
+  {
+  path: 'notas',
+  loadComponent: () => import('./notas/Listar/listar-notas').then((c) => c.Notas),
+  },
+
+  {
+  path: 'notas/cadastrar',
+  loadComponent: () =>
+    import('./notas/cadastrar/cadastrar-nota').then((c) => c.CadastrarNota),
+  },
 ];
 
 export const appConfig: ApplicationConfig = {

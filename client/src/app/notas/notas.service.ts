@@ -1,20 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-export interface CategoriaDto {
-  id: string;
-  titulo: string;
-}
-
-export interface NotaDto {
-  id: string;
-  titulo: string;
-  descricao: string | null;
-  status: string;
-  categorias: CategoriaDto[];
-  criadoEm: string;
-  atualizadoEm: string;
-}
+import { CriarNotaRequest, NotaDto } from './notas.models';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +12,9 @@ export class NotasService {
 
   listar() {
     return this.http.get<NotaDto[]>(this.apiUrl);
+  }
+
+  criar(request: CriarNotaRequest) {
+    return this.http.post<NotaDto>(this.apiUrl, request);
   }
 }
