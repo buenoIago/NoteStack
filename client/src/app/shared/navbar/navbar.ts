@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { Auth, UsuarioDto } from '../../services/auth';
+import { Auth, UsuarioDto } from '../../Auth/auth';
 
 @Component({
   imports: [RouterLink],

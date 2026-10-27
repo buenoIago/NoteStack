@@ -1,7 +1,7 @@
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter, Routes } from '@angular/router';
-import { authInterceptor } from './interceptors/auth.interceptor';
+import { authInterceptor } from './Auth/auth.interceptor';
 
 const routes: Routes = [
   {
@@ -11,11 +11,11 @@ const routes: Routes = [
 
   {
     path: 'login',
-    loadComponent: () => import('./login/login').then((c) => c.Login),
+    loadComponent: () => import('./Auth/login/login').then((c) => c.Login),
   },
   {
     path: 'cadastro',
-    loadComponent: () => import('./login/login').then((c) => c.Login),
+    loadComponent: () => import('./Auth/login/login').then((c) => c.Login),
   }
 ];
 

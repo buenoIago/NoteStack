@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { Navbar } from '../shared/navbar/navbar';
-import { Auth } from '../services/auth';
+import { Navbar } from '../../shared/navbar/navbar';
+import { Auth } from '../auth';
 
 @Component({
   imports: [Navbar, RouterLink, FormsModule],
