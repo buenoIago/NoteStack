@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { Auth, UsuarioDto } from '../../Auth/auth';
+import { AuthService } from '../../Auth/auth.services';
 
 @Component({
   imports: [RouterLink],
@@ -8,44 +8,14 @@ import { Auth, UsuarioDto } from '../../Auth/auth';
   templateUrl: './navbar.html',
 })
 export class Navbar {
-  login = false;
-  usuario: UsuarioDto | null = null;
+  protected readonly authService = inject(AuthService);
+  protected readonly sessaoAutenticada = this.authService.sessao;
 
-  constructor(  
-    private auth: Auth, 
-    private router: Router
-  ) {
-    this.carregarUsuario();
-  }
-
-  carregarUsuario() {
-    const accessToken = localStorage.getItem('accessToken');
-
-    if (!accessToken) {
-      return;
-    }
-
-    this.auth.me().subscribe({
-      next: (usuario) => {
-        this.usuario = usuario;
-        this.login = true;
-      },
-      error: () => {
-        this.usuario = null;
-        this.login = false;
-        localStorage.removeItem('accessToken');
-      }
-    });
-  }
+  private readonly router = inject(Router);
 
   sair() {
-    this.auth.logout().subscribe({
+    this.authService.logout().subscribe({
       next: () => {
-        localStorage.removeItem('accessToken');
-
-        this.usuario = null;
-        this.login = false;
-
         this.router.navigate(['/login']);
       },
       error: (erro) => {

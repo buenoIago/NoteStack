@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Navbar } from '../../shared/navbar/navbar';
-import { Auth } from '../auth';
+import { AuthService } from '../auth.services';
 
 @Component({
   imports: [Navbar, RouterLink, FormsModule],
@@ -19,7 +19,7 @@ export class Login {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private auth: Auth
+    private authService: AuthService
   ) {
     this.cadastro = this.route.snapshot.routeConfig?.path === 'cadastro';
   }
@@ -31,11 +31,11 @@ export class Login {
       senha: this.senha
     };
 
-    this.auth.cadastrar(request).subscribe({
+    this.authService.cadastrar(request).subscribe({
       next: () => {
         this.router.navigate(['/login']);
       },
-      error: (erro) => {
+      error: (erro: any) => {
         console.error(erro);
       }
     });
@@ -47,12 +47,8 @@ export class Login {
       senha: this.senha
     };
 
-    this.auth.login(request).subscribe({
-      next: (token) => {
-        localStorage.setItem('accessToken', token.accessToken);
-
-        console.log(token);
-
+    this.authService.login(request).subscribe({
+      next: () => {
         this.router.navigate(['/']);
       },
       error: (erro) => {
