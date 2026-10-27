@@ -152,6 +152,28 @@
             </div>
           }
         </div>
+
+        <div class="flex items-center justify-between border-t border-slate-200 pt-6">
+
+          <button
+            type="button"
+            (click)="excluirCategoria()"
+            [disabled]="excluindo()"
+            class="cursor-pointer text-sm font-medium text-red-600
+                   transition-colors hover:text-red-700
+                   disabled:cursor-wait disabled:opacity-70">
+            {{ excluindo() ? 'Excluindo...' : 'Excluir categoria' }}
+          </button>
+
+          <a
+            [routerLink]="['/categorias', categoria.id, 'editar']"
+            class="cursor-pointer rounded-lg bg-[#101b36] px-6 py-3
+                   text-sm font-medium text-white transition-colors
+                   hover:bg-[#18284d]">
+            Editar categoria
+          </a>
+
+        </div>
       }
     </section>
   </div>

@@ -56,6 +56,13 @@ const routes: Routes = [
       import('./categorias/detalhes/detalhes-categorias')
         .then((c) => c.DetalhesCategorias),
   },
+
+  {
+    path: 'categorias/:categoriaId/editar',
+    loadComponent: () =>
+      import('./categorias/editar/editar-categorias')
+        .then((c) => c.EditarCategorias),
+  },
 ];
 
 export const appConfig: ApplicationConfig = {

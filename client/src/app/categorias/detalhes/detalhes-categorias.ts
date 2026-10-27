@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Navbar } from '../../shared/navbar/navbar';
 import { NotaDto } from '../../notas/notas.models';
 import { NotasService } from '../../notas/notas.service';
@@ -15,12 +15,14 @@ import { CategoriasService } from '../categorias.service';
 })
 export class DetalhesCategorias {
   private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
   private readonly categoriasService = inject(CategoriasService);
   private readonly notasService = inject(NotasService);
 
   protected readonly categoria = signal<CategoriaDto | null>(null);
   protected readonly notas = signal<NotaDto[]>([]);
   protected readonly carregando = signal(true);
+  protected readonly excluindo = signal(false);
   protected readonly mensagemErro = signal('');
 
   constructor() {
@@ -61,6 +63,35 @@ export class DetalhesCategorias {
 
         this.mensagemErro.set('Não foi possível carregar as notas da categoria.');
         this.carregando.set(false);
+      },
+    });
+  }
+
+  protected excluirCategoria(): void {
+    const categoria = this.categoria();
+
+    if (!categoria) return;
+
+    const confirmouExclusao = confirm(
+      `Deseja realmente excluir a categoria "${categoria.titulo}"?`
+    );
+
+    if (!confirmouExclusao) return;
+
+    this.excluindo.set(true);
+    this.mensagemErro.set('');
+
+    this.categoriasService.excluir(categoria.id).subscribe({
+      next: () => {
+        this.excluindo.set(false);
+
+        void this.router.navigateByUrl('/categorias');
+      },
+      error: (erro: HttpErrorResponse) => {
+        console.error(erro);
+
+        this.mensagemErro.set('Não foi possível excluir a categoria.');
+        this.excluindo.set(false);
       },
     });
   }

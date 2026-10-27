@@ -1,0 +1,135 @@
+<main class="min-h-screen bg-[#f4f6fb] text-slate-900">
+
+  <app-navbar></app-navbar>
+
+  <div class="ml-48 min-h-screen">
+
+    <header class="border-b border-slate-200 bg-white">
+
+      <div class="px-10 py-10">
+
+        <a
+          [routerLink]="['/categorias', categoriaId]"
+          class="text-sm font-medium text-slate-500 transition-colors
+                 hover:text-indigo-700">
+          ← Voltar para detalhes
+        </a>
+
+        <p class="mt-8 text-sm font-semibold uppercase tracking-wider text-indigo-600">
+          Editar categoria
+        </p>
+
+        <h1 class="mt-3 text-4xl font-semibold leading-tight text-slate-900">
+          Atualize sua
+          <span class="text-indigo-700">categoria.</span>
+        </h1>
+
+        <p class="mt-4 max-w-lg text-slate-500">
+          Altere o título da categoria para manter suas anotações organizadas.
+        </p>
+
+      </div>
+
+    </header>
+
+    <section class="max-w-4xl px-10 py-10">
+
+      @if (mensagemErro()) {
+
+        <div class="mb-8 border-l-2 border-red-500 pl-4">
+
+          <p class="text-sm font-medium text-red-600" role="alert">
+            {{ mensagemErro() }}
+          </p>
+
+        </div>
+
+      }
+
+      @if (carregando()) {
+
+        <div class="border-t border-slate-200 py-10">
+
+          <p class="text-sm text-slate-500" role="status">
+            Carregando categoria...
+          </p>
+
+        </div>
+
+      }
+      @else {
+
+        <form
+          (submit)="editarCategoria($event)"
+          novalidate
+          class="space-y-10">
+
+          <div>
+
+            <label
+              for="titulo"
+              class="text-xs font-semibold uppercase tracking-wider text-slate-500">
+              Título
+            </label>
+
+            <input
+              id="titulo"
+              type="text"
+              autocomplete="off"
+              [formField]="formularioCategoria.titulo"
+              [attr.aria-invalid]="
+                formularioCategoria.titulo().touched() &&
+                formularioCategoria.titulo().invalid()
+              "
+              [attr.aria-describedby]="
+                formularioCategoria.titulo().touched() &&
+                formularioCategoria.titulo().invalid()
+                  ? 'titulo-erro'
+                  : null
+              "
+              class="mt-3 w-full border-0 border-b border-slate-300
+                     bg-transparent px-0 py-3 text-xl font-medium
+                     text-slate-900 outline-none transition-colors
+                     placeholder:text-slate-400
+                     focus:border-indigo-700" />
+
+            @if (
+              formularioCategoria.titulo().touched() &&
+              formularioCategoria.titulo().invalid()
+            ) {
+
+              <p
+                id="titulo-erro"
+                class="mt-2 text-sm text-red-600">
+                {{ formularioCategoria.titulo().errors()[0].message }}
+              </p>
+
+            }
+
+          </div>
+
+          <div class="flex items-center justify-between border-t border-slate-200 pt-6">
+
+            <a
+              [routerLink]="['/categorias', categoriaId]"
+              class="text-sm font-medium text-slate-500 transition-colors
+                     hover:text-slate-900">
+              Cancelar
+            </a>
+
+            <button
+              type="submit"
+              [disabled]="enviandoFormulario()"
+              class="cursor-pointer rounded-lg bg-[#101b36] px-6 py-3
+                     text-sm font-medium text-white transition-colors
+                     hover:bg-[#18284d]
+                     disabled:cursor-wait disabled:opacity-70">
+              {{ enviandoFormulario() ? 'Salvando...' : 'Salvar alterações' }}
+            </button>
+
+          </div>
+        </form>
+      }
+    </section>
+  </div>
+</main>

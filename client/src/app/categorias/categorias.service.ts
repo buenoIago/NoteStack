@@ -19,4 +19,12 @@ export class CategoriasService {
   cadastrar(request: CategoriaRequest) {
     return this.http.post<CategoriaDto>(this.apiUrl, request);
   }
+
+  editar(id: string, request: CategoriaRequest) {
+    return this.http.put<CategoriaDto>(`${this.apiUrl}/${id}`, request);
+  }
+
+  excluir(id: string) {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }
