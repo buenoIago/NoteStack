@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { Navbar } from '../../shared/navbar/navbar';
 import { AuthService } from '../auth.services';
 
 @Component({
-  imports: [Navbar, RouterLink, FormsModule],
+  imports: [ RouterLink, FormsModule],
   selector: 'app-login',
   templateUrl: './login.html',
 })
@@ -49,7 +48,7 @@ export class Login {
 
     this.authService.login(request).subscribe({
       next: () => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);
       },
       error: (erro) => {
         console.error(erro);

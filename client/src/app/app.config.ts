@@ -6,7 +6,13 @@ import { authInterceptor } from './Auth/auth.interceptor';
 const routes: Routes = [
   {
     path: '',
-      loadComponent: () => import('./home/home').then((c) => c.Home),
+    loadComponent: () =>
+      import('./Auth/shell/auth.shell').then((c) => c.Shell),
+  },
+  {
+    path: 'home',
+    loadComponent: () =>
+      import('./home/home').then((c) => c.Home),
   },
 
   {
