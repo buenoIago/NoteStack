@@ -26,14 +26,21 @@ const routes: Routes = [
   },
   
   {
-  path: 'notas',
-  loadComponent: () => import('./notas/Listar/listar-notas').then((c) => c.Notas),
+    path: 'notas',
+    loadComponent: () => import('./notas/Listar/listar-notas').then((c) => c.Notas),
   },
 
   {
-  path: 'notas/cadastrar',
-  loadComponent: () =>
-    import('./notas/cadastrar/cadastrar-nota').then((c) => c.CadastrarNota),
+    path: 'notas/cadastrar',
+    loadComponent: () =>
+      import('./notas/cadastrar/cadastrar-nota').then((c) => c.CadastrarNota),
+  },
+
+  {
+    path: 'categorias',
+    loadComponent: () =>
+      import('./categorias/listar/listar-categorias')
+        .then((c) => c.ListarCategorias),
   },
 ];
 
