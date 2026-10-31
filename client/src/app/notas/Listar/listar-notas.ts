@@ -28,4 +28,21 @@ export class Notas {
       }
     });
   }
+
+  excluir(nota: NotaDto) {
+    const confirmouExclusao = confirm(
+      `Deseja realmente excluir a nota "${nota.titulo}"?`
+    );
+
+    if (!confirmouExclusao) return;
+
+    this.notasService.excluir(nota.id).subscribe({
+      next: () => {
+        this.carregarNotas();
+      },
+      error: (erro) => {
+        console.error(erro);
+      }
+    });
+  }
 }

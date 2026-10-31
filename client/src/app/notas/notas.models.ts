@@ -15,3 +15,10 @@ export interface CriarNotaRequest {
   descricao: string | null;
   categoriaIds: string[];
 }
+
+export interface AtualizarNotaRequest {
+  titulo: string;
+  descricao: string | null;
+  status: string;
+  categoriaIds: string[];
+}

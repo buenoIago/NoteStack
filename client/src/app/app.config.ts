@@ -37,6 +37,13 @@ const routes: Routes = [
   },
 
   {
+    path: 'notas/:notaId/editar',
+    loadComponent: () =>
+      import('./notas/editar/editar-nota')
+        .then((c) => c.EditarNota),
+  },
+
+  {
     path: 'categorias',
     loadComponent: () =>
       import('./categorias/listar/listar-categorias')
