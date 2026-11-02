@@ -13,93 +13,197 @@
 
 O NoteStack é uma aplicação para registrar e organizar anotações em um só lugar. A proposta é ajudar o usuário a guardar ideias e informações importantes de forma simples e fácil de encontrar. Para isso, as informações são organizadas em categorias e notas.
 
-## Módulo de Autenticação
+## Funcionalidades
 
-### Requisitos funcionais
+- **Autenticação:** cadastro, login e gerenciamento de sessão dos usuários.
+- **Notas:** criação, visualização, edição e exclusão de anotações.
+- **Categorias:** criação, visualização, edição e exclusão de categorias.
+- **Organização:** associação de notas às respectivas categorias e filtragem por categoria.
+- **Arquivamento:** gerenciamento do estado das anotações, entre ativas e arquivadas.
+- **Isolamento de dados:** cada usuário acessa somente suas próprias notas e categorias.
 
-- Permitir que um usuário crie uma conta informando nome, e-mail e senha;
-- Permitir que o usuário entre na aplicação com e-mail e senha;
-- Manter a sessão autenticada e permitir que o usuário encerre sua sessão;
-- Exibir o nome do usuário autenticado na interface;
-- Restringir o acesso às funcionalidades pessoais da aplicação a usuários autenticados.
+## Tecnologias utilizadas
 
-### Regras de negócio
+### Front-end
 
-- **Nome:** obrigatório e utilizado para identificar o usuário na interface;
-- **E-mail:** obrigatório, válido e único;
-- **Senha:** obrigatória, com pelo menos 8 caracteres, incluindo um número e um caractere especial;
-- Após o login, as operações protegidas devem utilizar o token de autenticação da sessão;
-- Cada usuário pode acessar somente as próprias notas e categorias.
+- Angular
+- TypeScript
+- Tailwind CSS
+- Lucide Icons
 
-## Módulo de Categorias
+### Back-end
 
-### Requisitos funcionais
+- C#
+- .NET 10
+- ASP.NET Core
+- Entity Framework Core
+- MediatR
+- FluentResults
+- JWT
+- ASP.NET Core Identity
 
-- Registrar novas categorias;
-- Visualizar todas as categorias cadastradas;
-- Editar categorias existentes;
-- Excluir categorias cadastradas.
+### Banco de dados e infraestrutura
 
-### Regras de negócio
+- SQL Server
+- Docker
+- RabbitMQ
 
-- **Título:** obrigatório, entre 2 e 100 caracteres;
-- Não é permitido cadastrar duas categorias com o mesmo título.
+## Estrutura do projeto
 
-## Módulo de Notas
+```text
+NoteStack/
+├── client/                         # Aplicação Angular
+│   ├── public/                     # Arquivos públicos
+│   ├── src/
+│   │   ├── app/                    # Componentes, páginas e serviços
+│   │   ├── environments/           # Configurações de ambiente
+│   │   ├── index.html
+│   │   ├── main.ts                 # Inicialização do Angular
+│   │   └── styles.css              # Estilos globais
+│   ├── angular.json
+│   ├── package.json
+│   ├── package-lock.json
+│   └── tsconfig.json
+│
+├── server/                         # API .NET
+│   ├── src/
+│   │   ├── Api/
+│   │   ├── Aplicacao/
+│   │   ├── Dominio/
+│   │   └── Infraestrutura/
+│   └── docker-compose.yml
+│
+└── README.md
+```
 
-### Requisitos funcionais
+## Como executar
 
-- Registrar novas notas;
-- Visualizar todas as notas cadastradas;
-- Agrupar notas por uma ou mais categorias;
-- Listar notas associadas a uma ou mais categorias especificadas;
-- Editar notas existentes;
-- Excluir notas cadastradas.
+### Requisitos
 
-### Regras de negócio
+Antes de começar, certifique-se de ter instalado:
 
-- **Título:** obrigatório, entre 2 e 100 caracteres;
-- **Descrição:** opcional, com até 300 caracteres;
-- **Status:** ativa ou arquivada;
-- Notas criadas começam com status **ativa**;
-- **Categorias:** opcionais; uma nota pode não estar associada a nenhuma categoria;
-- Não é permitido cadastrar duas notas com o mesmo título.
+- [Git](https://git-scm.com/)
+- [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
+- [Node.js](https://nodejs.org/)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
-## API (server)
-
-A API está em `server/` e usa .NET 10, ASP.NET Core Identity, JWT Bearer, EF Core e SQL Server. Para executar, configure uma connection string SQL Server e uma chave JWT (mínimo 32 bytes) usando User Secrets:
+### 1. Clone o repositório
 
 ```bash
-dotnet user-secrets set "ConnectionStrings:SqlServer" "<connection-string-sql-server>" --project server/src/Api/NoteStack.Api.csproj
-dotnet user-secrets set "Jwt:SigningKey" "<chave-aleatoria-com-pelo-menos-32-bytes>" --project server/src/Api/NoteStack.Api.csproj
-dotnet user-secrets set "LuckyPenny:LicenseKey" "<chave-de-licença-do-lucky-penny>" --project server/src/Api/NoteStack.Api.csproj
+git clone https://github.com/buenoIago/NoteStack.git
+cd NoteStack
+```
+
+### 2. Inicie os serviços com Docker
+
+Entre na pasta `server`:
+
+```bash
+cd server
+```
+
+Inicie o SQL Server e o RabbitMQ:
+
+```bash
+docker compose up -d
+```
+
+Os serviços estarão disponíveis em:
+
+- **SQL Server:** `localhost:1433`
+- **RabbitMQ:** `localhost:5672`
+- **Painel do RabbitMQ:** `http://localhost:15672`
+
+Acesse o painel do RabbitMQ utilizando as credenciais configuradas no Docker Compose.
+
+### 3. Configure os User Secrets da API
+
+Volte para a raiz do projeto:
+
+```bash
+cd ..
+```
+
+Configure a connection string do SQL Server:
+
+```bash
+dotnet user-secrets set "ConnectionStrings:SqlServer" "Server=localhost,1433;Database=NoteStackDb;User Id=sa;Password=<SENHA_DO_SQL_SERVER>;TrustServerCertificate=True" --project server/src/Api/NoteStack.Api.csproj
+```
+
+Configure a chave JWT, que deve possuir pelo menos 32 bytes:
+
+```bash
+dotnet user-secrets set "Jwt:SigningKey" "<SUA_CHAVE_JWT>" --project server/src/Api/NoteStack.Api.csproj
+```
+
+Configure a chave de licença do MediatR/Lucky Penny, caso exigida pela configuração do projeto:
+
+```bash
+dotnet user-secrets set "LuckyPenny:LicenseKey" "<SUA_CHAVE_DE_LICENCA>" --project server/src/Api/NoteStack.Api.csproj
+```
+
+Substitua os valores entre `< >` pelas suas próprias configurações.
+
+### 4. Restaure as ferramentas e atualize o banco de dados
+
+Restaure as ferramentas .NET:
+
+```bash
 dotnet tool restore --tool-manifest server/dotnet-tools.json
+```
+
+Aplique as migrations:
+
+```bash
 dotnet ef database update --project server/src/Infraestrutura/NoteStack.Infraestrutura.csproj --startup-project server/src/Api/NoteStack.Api.csproj
+```
+
+### 5. Execute a API
+
+```bash
 dotnet run --project server/src/Api/NoteStack.Api.csproj
 ```
 
-Em desenvolvimento, a API aplica as migrations na inicialização. O Swagger/OpenAPI fica disponível em `/swagger`; exemplos de chamadas estão em `server/src/Api/NoteStack.Api.http`.
+A API estará disponível em:
 
-| Método                 | Rota               | Acesso  | Operação                            |
-| ---------------------- | ------------------ | ------- | ----------------------------------- |
-| `POST`                 | `/auth/cadastro`   | Público | Cria conta com nome, e-mail e senha |
-| `POST`                 | `/auth/login`      | Público | Autentica e retorna JWT             |
-| `GET`                  | `/auth/me`         | Bearer  | Retorna os dados do usuário atual   |
-| `POST`                 | `/auth/logout`     | Bearer  | Revoga imediatamente o JWT atual    |
-| `GET`, `POST`          | `/categorias`      | Bearer  | Lista e cria categorias             |
-| `GET`, `PUT`, `DELETE` | `/categorias/{id}` | Bearer  | Consulta, edita e exclui categoria  |
-| `GET`, `POST`          | `/notas`           | Bearer  | Lista (com filtro opcional por categoria) e cria notas |
-| `GET`, `PUT`, `DELETE` | `/notas/{id}`      | Bearer  | Consulta, edita e exclui nota       |
+`http://localhost:5146`
 
-Os títulos são únicos por usuário sem diferenciar caixa ou espaços nas extremidades. A exclusão de categoria mantém as notas e remove somente as associações. O `PUT` da nota substitui a lista de categorias; use `categoriaIds: []` para remover todas. A sessão não usa refresh token: após a expiração, é necessário entrar novamente. Erros seguem `ProblemDetails` e erros de validação incluem mensagens por campo.
+A documentação Swagger pode ser acessada em:
 
-Para filtrar notas por categorias, informe `categoriaIds` uma vez ou mais na query string de `GET /notas`, por exemplo `GET /notas?categoriaIds=<id1>&categoriaIds=<id2>`. O filtro é exclusivo: com vários IDs, retorna somente notas associadas a **todas** as categorias informadas. Sem o parâmetro, a rota lista todas as notas do usuário autenticado.
+`http://localhost:5146/swagger`
 
-Os casos de uso da camada de aplicação são implementados como requests e handlers do MediatR, com resultados e erros representados por FluentResults e convertidos para respostas HTTP pela API.
+### 6. Execute o front-end
 
-Build e testes:
+Abra outro terminal, na raiz do projeto, e entre na pasta `client`:
 
 ```bash
-dotnet build server/NoteStack.slnx --configuration Release
-dotnet test server/NoteStack.slnx
+cd client
 ```
+
+Instale as dependências:
+
+```bash
+npm ci
+```
+
+Inicie a aplicação:
+
+```bash
+npm start
+```
+
+O front-end estará disponível em:
+
+`http://localhost:4200`
+
+## Acesso à aplicação
+
+A versão publicada do front-end pode ser acessada pelo GitHub Pages:
+
+[https://buenoiago.github.io/NoteStack/](https://buenoiago.github.io/NoteStack/)
+
+Para utilizar todas as funcionalidades da aplicação publicada, a API também precisa estar hospedada e acessível pela internet.
+
+---
+
+Desenvolvido por **Iago Pereira**.
