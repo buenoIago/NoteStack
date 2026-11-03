@@ -40,7 +40,7 @@
           <div class="mt-5 flex items-end justify-between">
 
             <span class="text-4xl font-semibold text-slate-900">
-              {{ notas.length }}
+              {{ notas().length }}
             </span>
 
             <span
@@ -64,7 +64,7 @@
           <div class="mt-5 flex items-end justify-between">
 
             <span class="text-4xl font-semibold text-slate-900">
-            {{ categorias.length }}
+            {{ categorias().length }}
             </span>
 
             <span
@@ -101,11 +101,11 @@
 
         </div>
 
-        @if (notas.length > 0) {
+        @if (notas().length > 0) {
 
           <div class="border-t border-slate-200">
 
-            @for (nota of notas.slice(0, 4); track nota.id) {
+            @for (nota of notas().slice(0, 4); track nota.id) {
 
               <a
                 routerLink="/notas"

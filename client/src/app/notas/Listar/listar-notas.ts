@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Navbar } from '../../shared/navbar/navbar';
 import { DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -11,7 +11,7 @@ import { NotasService } from '../notas.service';
   templateUrl: './listar-notas.html',
 })
 export class Notas {
-  notas: NotaDto[] = [];
+  notas = signal<NotaDto[]>([]);
 
   constructor(private notasService: NotasService) {
     this.carregarNotas();
@@ -20,7 +20,7 @@ export class Notas {
   carregarNotas() {
     this.notasService.listar().subscribe({
       next: (notas) => {
-        this.notas = notas;
+        this.notas.set(notas);
         console.log(notas);
       },
       error: (erro) => {

@@ -43,7 +43,7 @@
 
           <p class="text-sm text-slate-500">
             <span class="font-semibold text-slate-900">
-              {{ notas.length }}
+              {{ notas().length }}
             </span>
 
             @if (notas.length === 1) {
@@ -69,7 +69,7 @@
 
         <div class="border-t border-slate-200"> 
 
-          @for (nota of notas; track nota.id) {
+          @for (nota of notas(); track nota.id) {
 
             <article
               class="group border-b border-slate-200 py-6

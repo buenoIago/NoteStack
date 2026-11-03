@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { Navbar } from '../shared/navbar/navbar';
@@ -16,8 +16,8 @@ import { CategoriasService } from '../categorias/categorias.service';
   templateUrl: './home.html',
 })
 export class Home {
-  notas: NotaDto[] = [];
-  categorias: CategoriaDto[] = [];
+  notas = signal<NotaDto[]>([]);
+  categorias = signal<CategoriaDto[]>([]);
 
   constructor(
     protected authService: AuthService,
@@ -30,19 +30,15 @@ export class Home {
 
   carregarNotas() {
     this.notasService.listar().subscribe({
-      next: (notas) => {
-        this.notas = notas;
-      },
-      error: (erro) => {
-        console.error(erro);
-      }
+      next: (notas) => this.notas.set(notas),
+      error: (erro) => console.error('Erro ao carregar notas', erro),
     });
   }
 
   carregarCategorias() {
     this.categoriasService.listar().subscribe({
       next: (categorias) => {
-        this.categorias = categorias;
+        this.categorias.set(categorias);
       },
       error: (erro) => {
         console.error(erro);
